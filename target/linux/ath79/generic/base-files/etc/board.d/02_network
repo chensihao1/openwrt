@@ -307,6 +307,7 @@ ath79_setup_interfaces()
 		ucidef_add_switch "switch0" \
 			"0@eth0" "2:lan:3" "3:lan:2" "4:lan:1"
 		;;
+	nec,wg1400hp|\
 	tplink,archer-c5-v1|\
 	tplink,archer-c7-v1|\
 	tplink,archer-c7-v2|\
