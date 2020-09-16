@@ -73,7 +73,8 @@
 			};
 
 			partition@5a0000 {
-				label = "runtime";
+				compatible = "denx,uimage";
+				label = "firmware";
 				reg = <0x5a0000 0xd30000>;
 			};
 
