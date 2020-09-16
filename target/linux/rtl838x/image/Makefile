@@ -66,4 +66,17 @@ define Device/d-link_dgs-1210-28
   DEVICE_MODEL := DGS-1210-28
 endef
 TARGET_DEVICES += d-link_dgs-1210-28
+
+define Device/inaba_aml2-17gp
+  SOC := rtl8382
+  IMAGE_SIZE := 13504k
+  DEVICE_VENDOR := INABA
+  DEVICE_MODEL := Abaniact AML2-17GP
+#  UIMAGE_MAGIC := 0x00000006
+#  KERNEL := kernel-bin | append-dtb | gzip | custom-uimage 2.2.2.0
+#  KERNEL_INITRAMFS := kernel-bin | append-dtb | gzip | custom-uimage 2.2.2.0
+  DEVICE_PACKAGES := ip-full ip-bridge kmod-gpio-button-hotplug tc
+endef
+TARGET_DEVICES += inaba_aml2-17gp
+
 $(eval $(call BuildImage))
