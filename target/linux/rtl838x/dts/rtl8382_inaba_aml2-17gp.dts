@@ -10,13 +10,6 @@
 	compatible = "inaba,aml2-17gp", "realtek,rtl838x-soc";
 	model = "INABA Abaniact AML2-17GP";
 
-/*	aliases {
-		led-boot = &led_sys;
-		led-failsafe = &led_sys;
-		led-running = &led_sys;
-		led-upgrade = &led_sys;
-	};*/
-
 	chosen {
 		bootargs = "console=ttyS0,115200";
 	};
@@ -30,16 +23,6 @@
 			linux,code = <KEY_RESTART>;
 		};
 	};
-
-/*	leds {
-		compatible = "gpio-leds";
-
-		led_sys: sys {
-			label = "aml2-17gp:green:sys";
-			gpios = <&gpio0 47 GPIO_ACTIVE_HIGH>;
-		};
-		// GPIO 25: power on/off all port leds
-	};*/
 };
 
 &gpio0 {
