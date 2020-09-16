@@ -133,7 +133,7 @@
 			compatible = "ethernet-phy-ieee802.3-c22";
 		};
 
-		/* external rtl8218b phy */
+		/* external phy on rtl8218b */
 		phy16: ethernet-phy@16 {
 			reg = <16>;
 			compatible = "ethernet-phy-ieee802.3-c22";
@@ -171,6 +171,12 @@
 
 		phy23: ethernet-phy@23 {
 			reg = <23>;
+			compatible = "ethernet-phy-ieee802.3-c22";
+		};
+
+		/* external phy on rtl8214fc */
+		phy24: ethernet-phy@24 {
+			reg = <24>;
 			compatible = "ethernet-phy-ieee802.3-c22";
 		};
 	};
@@ -290,6 +296,13 @@
 			reg = <23>;
 			label = "lan16";
 			phy-handle = <&phy23>;
+			phy-mode = "qsgmii";
+		};
+
+		port@16 {
+			reg = <24>;
+			label = "wan";
+			phy-handle = <&phy24>;
 			phy-mode = "qsgmii";
 		};
 
