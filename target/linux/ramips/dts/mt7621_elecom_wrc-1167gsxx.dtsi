@@ -164,7 +164,7 @@
 		compatible = "mediatek,mt76";
 		reg = <0x0000 0 0 0 0>;
 		mediatek,mtd-eeprom = <&factory 0x0>;
-		ieee80211-freq-limit = <2400000 2500000>;
+//		ieee80211-freq-limit = <2400000 2500000>;
 	};
 };
 
