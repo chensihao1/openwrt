@@ -143,7 +143,7 @@
 			phy-is-integrated;
 		};
 
-		/* external phy on rtl8218b */
+		/* External phy on RTL8218B */
 		phy16: ethernet-phy@16 {
 			reg = <16>;
 			compatible = "ethernet-phy-ieee802.3-c22";
@@ -184,7 +184,7 @@
 			compatible = "ethernet-phy-ieee802.3-c22";
 		};
 
-		/* external phy on rtl8214fc */
+		/* External phy on RTL8214FC */
 		phy24: ethernet-phy@24 {
 			reg = <24>;
 			compatible = "ethernet-phy-ieee802.3-c22";
