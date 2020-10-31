@@ -39,15 +39,15 @@ define Build/elx-header
 	$(eval hw_id=$(word 1,$(1)))
 	$(eval xor_pattern=$(word 2,$(1)))
 	( \
-		echo -ne "\x00\x00\x00\x00\x00\x00\x00\x03" | \
-			dd bs=42 count=1 conv=sync; \
-		hw_id="$(hw_id)"; \
-		echo -ne "\x$${hw_id:0:2}\x$${hw_id:2:2}\x$${hw_id:4:2}\x$${hw_id:6:2}" | \
-			dd bs=20 count=1 conv=sync; \
-		echo -ne "$$(printf '%08x' $$(stat -c%s $@) | fold -s2 | xargs -I {} echo \\x{} | tr -d '\n')" | \
-			dd bs=8 count=1 conv=sync; \
-		echo -ne "$$($(STAGING_DIR_HOST)/bin/mkhash md5 $@ | fold -s2 | xargs -I {} echo \\x{} | tr -d '\n')" | \
-			dd bs=58 count=1 conv=sync; \
+		echo -ne "$$(echo "0000000000000003" | sed 's/../\\x&/g')"; \
+		dd if=/dev/zero bs=34 count=1; \
+		echo -ne "$$(echo "$(hw_id)" | sed 's/../\\x&/g')"; \
+		dd if=/dev/zero bs=16 count=1; \
+		fw_size="$$(printf '%08x' $$(stat -c%s $@))"; \
+		echo -ne "$$(echo "$${fw_size}00000000" | sed 's/../\\x&/g')"; \
+		fw_md5="$$($(STAGING_DIR_HOST)/bin/mkhash md5 $@)"; \
+		echo -ne "$$(echo "$${fw_md5}" | sed 's/../\\x&/g')"; \
+		dd if=/dev/zero bs=42 count=1; \
 	) > $(KDIR)/tmp/$(DEVICE_NAME).header
 	$(call Build/xor-image,-p $(xor_pattern) -x)
 	cat $(KDIR)/tmp/$(DEVICE_NAME).header $@ > $@.new
