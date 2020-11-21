@@ -48,7 +48,8 @@ define Device/buffalo_wsr-2533dhp2
 	fit lzma $$(KDIR)/image-$$(firstword $$(DEVICE_DTS)).dtb | \
 	buffalo-kernel-trx
   IMAGE/sysupgrade.bin := trx -M 0x32504844 | pad-rootfs | append-metadata
-  DEVICE_PACKAGES := kmod-mt7615e kmod-switch-rtl8367b swconfig
+  DEVICE_PACKAGES := kmod-mt7615e kmod-mt7615-firmware kmod-switch-rtl8367b \
+	swconfig
 endef
 TARGET_DEVICES += buffalo_wsr-2533dhp2
 
